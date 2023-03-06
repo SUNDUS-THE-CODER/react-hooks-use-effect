@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from "react";
 
 function App() {
+  const [text, setText] = useState("");
   useEffect(() => {
-    console.log("useEffect called");
-  });
+    if (text.length > 0) document.title = text;
+  }, [text]);
 
   console.log("Component rendering");
 
-  return <button>Click Me</button>;
+  return (
+    <input
+        type="text"
+        placeholder="Type away..."
+        value={text}
+        onChange={(event) => setText(event.target.value)}
+      />
+  );
 }
 
 export default App;
